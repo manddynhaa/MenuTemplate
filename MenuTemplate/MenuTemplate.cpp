@@ -13,6 +13,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <io.h>
 
 #ifdef WINDOWS
 
@@ -386,8 +387,10 @@ void MenuTemplate::swapEntries(const int &PositionA, const int &PositionB) {
     }
 }
 
-void MenuTemplate::setCursor(const string &Cursor) {
+void MenuTemplate::setCursor(const string &Cursor, const bool isUnicode) {
     try {
+    	//if (isUnicode) _setmode(_fileno(stdout), 0x00020000);
+    	
         // Testing, if new Cursor equals old Cursor. If true: return.
         if(this->Cursor == Cursor)
             return;
@@ -402,11 +405,16 @@ void MenuTemplate::setCursor(const string &Cursor) {
         for(Counter = 0; Counter < Cursor.length(); ++Counter)
             if(Cursor[Counter] != ' ')
                 break;
+                
         // If cursor contains only spaces: exception.
         if(Counter == Cursor.length())
             throw string ("Cursor must not contain only spaces!");
 
-        this->Cursor = Cursor;
+		if (isUnicode) {
+			this->Cursor = Cursor;
+		} else {
+			this->Cursor = Cursor;
+		}
     }
     catch(string Exception) {
         cout << Exception << endl;
@@ -518,4 +526,18 @@ int MenuTemplate::displayGetPosition() {
 int MenuTemplate::getNumberOfEntries() {
     return Entries.size();
 }
+
+string MenuTemplate::getCursor(){
+	return this->Cursor;
+}
+
+void MenuTemplate::setCursorLength(const int CursorLength){
+    this->CursorLength = CursorLength;
+}
+
+int MenuTemplate::getCursorLength(){
+    return this->CursorLength;
+}
+
+
 } // end namespace

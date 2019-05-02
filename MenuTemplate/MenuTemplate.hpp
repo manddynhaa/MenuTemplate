@@ -15,7 +15,6 @@
 
 using std::vector;
 using std::string;
-
 // define LINUX or WINDOWS
 #define WINDOWS
 
@@ -143,14 +142,15 @@ private:
     //! Cursor must not be empty or containg ony spaces.
     //! Initial cursor is "> ".
     //!
+    int CursorLength;
     string Cursor = "> ";
 
     //!
     //! @brief      List of all menu entries.
     //!
     vector<Entry> Entries;
-
-    //!
+	
+	//!
     //!  @brief      Clears screen and resets cursor.
     //!
     //! There must be an OS set. Choose between LINUX or WINDOWS.
@@ -313,7 +313,7 @@ private:
     //!
     //! If cursor is empty or contains only spaces, it will not be set.
     //!
-    void setCursor(const string &Cursor);
+    void setCursor(const string &Cursor, const bool isUnicode);
 
     //!
     //! @brief      Sets startposition of cursor.
@@ -364,5 +364,7 @@ private:
     //! Size is always a value from 0 to number of entries.
     //!
     int getNumberOfEntries();
+    void setCursorLength(const int CursorLength);
+    int getCursorLength();
 };
 } // end namespace
