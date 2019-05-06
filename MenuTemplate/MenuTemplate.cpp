@@ -389,8 +389,6 @@ void MenuTemplate::swapEntries(const int &PositionA, const int &PositionB) {
 
 void MenuTemplate::setCursor(const string &Cursor, const bool isUnicode) {
     try {
-    	//if (isUnicode) _setmode(_fileno(stdout), 0x00020000);
-    	
         // Testing, if new Cursor equals old Cursor. If true: return.
         if(this->Cursor == Cursor)
             return;
@@ -413,7 +411,7 @@ void MenuTemplate::setCursor(const string &Cursor, const bool isUnicode) {
 		if (isUnicode) {
 			this->Cursor = Cursor;
 		} else {
-			this->Cursor = Cursor;
+			this->Cursor = ">";
 		}
     }
     catch(string Exception) {

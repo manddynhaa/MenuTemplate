@@ -22,8 +22,8 @@ using std::endl;
 int main() {
     // Example menu for a game:
     MenuTemplate::MenuTemplate MenuA;
-    
-	const string heart = ">";
+	
+	const string heart = "\xe2\x99\xa5 ";
 
     MenuA.Title = "\t\tNeverwinter Nights Simple Menu";
     MenuA.Description = "Choose with UP and DOWN, select with RETURN!";

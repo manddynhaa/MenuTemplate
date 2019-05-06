@@ -311,6 +311,8 @@ private:
     //!
     //! @param      String of Cursor.
     //!
+    //! @param      Define if is unicode.
+    //!
     //! If cursor is empty or contains only spaces, it will not be set.
     //!
     void setCursor(const string &Cursor, const bool isUnicode);
